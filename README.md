@@ -6,6 +6,7 @@ A comprehensive, local chatbot web application built with Flask and Hugging Face
 
 ---
 
+
 ## Table of Contents
 - [Features](#features)
 - [Requirements](#requirements)
