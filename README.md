@@ -6,10 +6,8 @@ A comprehensive, local chatbot web application built with Flask and Hugging Face
 
 ---
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/eafe5b7b-6f39-4cc6-90b7-f69942ecab41" alt="demo" width="80%">
+  <img src="https://github.com/user-attachments/assets/aed54aa0-9908-402c-b238-c598475b35cf" alt="demo" width="80%">
 </p>
-
-![demo](https://github.com/user-attachments/assets/eafe5b7b-6f39-4cc6-90b7-f69942ecab41)
 ---
 
 ## Table of Contents
