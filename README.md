@@ -5,6 +5,10 @@
 A comprehensive, local chatbot web application built with Flask and Hugging Face Transformers. This project demonstrates how to run a pre-trained conversational model in a modern web interface. It is designed for experimentation, learning, and local use—not for production deployment.
 
 ---
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/eafe5b7b-6f39-4cc6-90b7-f69942ecab41" alt="demo" width="80%">
+</p>
+
 ![demo](https://github.com/user-attachments/assets/eafe5b7b-6f39-4cc6-90b7-f69942ecab41)
 ---
 
