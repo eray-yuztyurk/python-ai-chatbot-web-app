@@ -2,7 +2,7 @@
 
 # Python AI Chatbot Web App
 
-A comprehensive, local chatbot web application built with Flask and Hugging Face Transformers. This project demonstrates how to run a pre-trained conversational model in a modern web interface. It is designed for experimentation, learning, and local use—not for production deployment.
+A simple, local chatbot web application built with Flask and Hugging Face Transformers. This project demonstrates how to run a pre-trained conversational model in a modern web interface. It is designed for experimentation, learning, and local use—not for production deployment.
 
 ---
 <p align="center">
