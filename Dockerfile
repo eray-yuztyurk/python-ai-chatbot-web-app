@@ -8,6 +8,6 @@ RUN pip3 install -r --no-cache-dir requirements.txt
 
 COPY . .
 
-EXPOSE 7860
+EXPOSE 5000
 
-CMD ["python3.10", "chatbot.py"]
+CMD ["python3.10", "main.py"]
