@@ -1,0 +1,164 @@
+/* ================================= */
+/* GLOBAL FONTS                      */
+/* ================================= */
+body {
+    font-family: "Indie Flower", cursive;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1e1f26 0%, #232531 40%, #2b2e3b 100%);
+    background-attachment: fixed;
+}
+
+input, button {
+    font-family: "Indie Flower", cursive;
+}
+
+/* ================================= */
+/* H1 – minimal dark mode shine      */
+/* ================================= */
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 0.4em;
+    text-align: center;
+    letter-spacing: 0.5px;
+
+    background: linear-gradient(90deg, #7aa2ff, #b18aff, #7aa2ff, #dfe5ff);
+    background-size: 200% auto;
+
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    0% { background-position: 0% center; }
+    100% { background-position: -200% center; }
+}
+
+/* ================================= */
+/* CONTAINER – dark glassmorphism    */
+/* ================================= */
+.container {
+    background: rgba(40, 42, 55, 0.55);
+    backdrop-filter: blur(14px);
+    color: #e9e9e9;
+
+    border-radius: 12px;
+    padding: 2em 30px; /* simplified */
+
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.45);
+
+    width: 90vw;
+    height: 85vh;
+    margin: 2em auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* ================================= */
+/* CHATBOX – dark pastel             */
+/* ================================= */
+#chatbox {
+    min-height: 200px;
+    max-height: 800px;
+    overflow-y: auto;
+    margin-bottom: 1em;
+
+    background: #2d3042;
+    border-radius: 8px;
+    border: 1px solid #3c3f56;
+
+    padding: 0 30px; /* simplified */
+    height: 90vh;
+}
+
+/* ================================= */
+/* MESSAGE BUBBLES                   */
+/* ================================= */
+.message {
+    padding: 14px 48px;
+    margin: 12px 0;
+    font-size: 1.15em;
+    line-height: 1.5;
+    border-radius: 10px;
+}
+
+.message.bot {
+    text-align: right;
+    background: rgba(255, 255, 255, 0.10);
+    color: #e6e6e6;
+}
+
+.message.user {
+    text-align: left;
+    background: rgba(100, 150, 255, 0.15);
+    color: #dfe5ff;
+}
+
+/* ================================= */
+/* BUTTON                            */
+/* ================================= */
+#sendBtn {
+    background-color: #5b6cff;
+    color: white;
+
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+    font-size: 1.15em;
+}
+
+#sendBtn:hover {
+    background-color: #4c5ce8;
+}
+
+/* ================================= */
+/* INPUT FIELD                       */
+/* ================================= */
+#userInput {
+    width: 100%;
+    padding-left: 20px;
+    box-sizing: border-box;
+
+    border: 2px solid #4a4d66;
+    border-radius: 6px;
+
+    background: #2c2f40;
+    color: #e9e9e9;
+
+    font-size: 1.15em;
+    line-height: 1.5;
+}
+
+/* ================================= */
+/* INPUT AREA LAYOUT                 */
+/* ================================= */
+.input-area {
+    display: flex;
+    gap: 10px;
+    padding: 0 30px;
+}
+
+/* ================================= */
+/* RESPONSIVE BREAKPOINTS            */
+/* ================================= */
+@media (max-width: 600px) {
+    .container {
+        width: 95vw;
+        height: 90vh;
+        padding: 1em 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    #sendBtn {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+}

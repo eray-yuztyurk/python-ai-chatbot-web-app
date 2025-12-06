@@ -1,4 +1,7 @@
-transformers==4.35.0
-torch==2.1.0
-numpy==1.26.0
-gradio==4.11.0
+transformers==4.46.0
+torch==2.4.0
+numpy==2.1.0
+flask==3.0.3
+flask-cors==4.0.1
+gunicorn==22.0.0
+requests==2.32.3

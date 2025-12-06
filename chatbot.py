@@ -1,30 +1,32 @@
 
 
 # import libraries
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausalLM
-import gradio as gr
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
 
 # variable to keep chat history
 chat_history = []
 model_cache = {}
 
+# define the model name
+model_name = "facebook/blenderbot-400M-distill"
+#-----------------------------------------------------------------------------------------------------------------------------------------
+# Note: We use that model as its lightweight and fast to run on CPU.
+# You can change it to any other model from Hugging Face, but make sure you have enough resources (CPU/GPU) to run it.
+# Please consider changing the AutoModelForSeq2SeqLM to AutoModelForCausalLM if you use a model that is not Seq2Seq (e.g. T5, OPT, etc.)
+# For more information on the models, please refer to https://huggingface.co/models?pipeline_tag=text-generation&sort=downloads
+#-----------------------------------------------------------------------------------------------------------------------------------------
+
+# loading the model and tokenizer based on the model name
 def load_model(model_name):
-    if model_name in model_cache:
-        return model_cache[model_name]
-    
+
     # choose float16 on CUDA when available
     preferred_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
-    if model_name in ["google/flan-t5-small", "google/flan-t5-base","facebook/blenderbot-400M-distill"]:
-        model = AutoModelForSeq2SeqLM.from_pretrained(
-            model_name,
-            dtype=preferred_dtype,
-            low_cpu_mem_usage=True)
-    else:
-        model = AutoModelForCausalLM.from_pretrained(
-            model_name,
-            dtype=preferred_dtype,
-            low_cpu_mem_usage=True)
+
+    model = AutoModelForSeq2SeqLM.from_pretrained(
+        model_name,
+        torch_dtype=preferred_dtype,
+    )
 
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 
@@ -32,8 +34,9 @@ def load_model(model_name):
 
     return model, tokenizer
 
-# loading the mode and tokenizer
-def select_model(prompt, model_name):
+# selecting 
+def get_response(prompt):
+
     model, tokenizer = load_model(model_name)
 
     response = generate_response(prompt, model, tokenizer)
@@ -79,31 +82,5 @@ def generate_response(prompt, model, tokenizer):
         response = response.split("Assistant:")[-1].strip()
 
     chat_history.append((prompt, response))
+
     return conversation, response
-
-# Note: use below to explore vocabulary files for pretrained models
-# tokenizer.pretrained_vocab_files_map
-
-def get_interface():
-    return gr.Interface(
-        fn=select_model,
-        inputs=[
-            gr.Textbox(label="Message", placeholder="Type your message here..."),
-            gr.Dropdown(
-            choices=[
-                "Qwen/Qwen2-1.5B-Instruct",
-                "microsoft/phi-2",
-                "facebook/blenderbot-400M-distill",
-                "facebook/opt-1.3b",
-                "google/flan-t5-small",
-                "google/flan-t5-base"
-            ],
-            label="Select Model",
-            value="facebook/blenderbot-400M-distill")],
-        outputs=[gr.Textbox(label="Conversation"), 
-                 gr.Textbox(label="Response")
-                 ],
-        title="ChattyBot",
-        description="Local chatbot using Hugging Face models. Select a model and send a message"
-        )
-
